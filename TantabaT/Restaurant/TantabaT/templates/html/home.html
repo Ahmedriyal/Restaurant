@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TantabaT</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="{% static 'js/nav.js' %}"></script>
+</head>
+<body>
+
+<!-- Navigation Bar Start -->
+    <header>
+      <a href="#" class="logo">TantabaT</a>
+      <div class="menu-btn"></div>
+      <div class="navigation">
+        <div class="navigation-items">
+          <a class="nav" href="#">Home</a>
+          <a class="nav" href="#about">About</a>
+          <a class="nav" href="#">Our Menu</a>
+          <a class="nav" href="#contact">Contact Us</a>
+          {% if user.is_authenticated %}
+<!--              <i class="fa fa-user"></i>{{user.username}}-->
+              <a href="{% url 'logout' %}">
+                <button class="btn">Logout</button>
+              </a>
+              {% else %}
+              <a class="dis" href="{% url 'signin' %}">
+                  <button class="btn">Login</button>
+              </a>
+              <a href="{% url 'signup' %}">
+                  <button class="btn1">SignUp</button>
+              </a>
+
+            {% endif %}
+        </div>
+
+      </div>
+    </header>
+<!-- Navigation Bar End -->
+
+<!-- Body Start -->
+    <section class="home">
+      <video class="video-slide active" src="{% static 'video/FoodFilm.mkv' %}" autoplay muted loop></video>
+      <div class="content active">
+        <h1>Experience Something new at first sip</h1>
+      </div>
+    </section>
+<!-- Body End -->
+
+<!-- About/Contact Section Start -->
+    <section class="about">
+        <div class="des" id="about">
+            <h1 class="header">About</h1>
+            <p>Serving your daily tea cravings and caffeine needs at a reasonable price, with an eclectic mix of healthy and tasty brewed beverages like cheese tea.</p>
+        </div>
+        <div class="contact" id="contact">
+            <h1 class="header">Contact</h1>
+            <h4><i class="fa fa-phone"></i>01684-933767</h4>
+            <h4><i class="fa fa-envelope"></i>tantabat36@gmail.com</h4>
+            <a class="fb" href="https://www.facebook.com/tantabat36"><i class="fab fa-facebook-f"></i>TantabaT</a>
+            <h4><i class="fa fa-map-marker"></i>T-36, Nurjahan Road, Mohammadpur, Dhaka, Dhaka Division, Bangladesh</h4>
+        </div>
+    </section>
+<!-- About/Contact Section End -->
+
+    <div class="media-icons">
+        <a href="https://www.facebook.com/tantabat36"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+
+{% load static %}
+<script src="{% static 'js/responsive.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+    <title>TantabaT Signin</title>
+</head>
+<body>
+
+  <!-- Navigation Bar start -->
+  <header>
+      <a href="#" class="logo">TantabaT</a>
+      <div class="menu-btn"></div>
+      <div class="navigation">
+          <div class="navigation-items">
+              <a class="nav" href="{% url 'home' %}">Home</a>
+              <a class="nav" href="#about">About</a>
+              <a class="nav" href="#">Our Menu</a>
+              <a class="nav" href="#contact">Contact Us</a>
+              {% if user.is_authenticated %}
+              <p class="user"><i class="fa fa-user"></i> {{user.username}}</a></p>
+              <a href="{% url 'logout' %}">
+                <button class="btn">Logout</button>
+              </a>
+              {% else %}
+              <a class="dis" href="{% url 'signin' %}">
+                  <button class="btn">Login</button>
+              </a>
+              <a href="{% url 'signup' %}">
+                  <button class="btn1">SignUp</button>
+              </a>
+              {% endif %}
+          </div>
+      </div>
+  </header>
+<!-- Navigation Bar end -->
+<!-- Sign in Form Start -->
+    <form class="login_box" action="signin" method="POST">
+        {% csrf_token %}
+        <h1>Login</h1>
+        <div class="textbox">
+            <p class="username">Username</p>
+            <input type="text" class="username" name="username" placeholder="Username">
+        </div>
+
+        <div class="textbox">
+            <p class="password">Password</p>
+            <input type="password" class="password" name="password" placeholder="Password">
+        </div>
+
+        <div class="form-input">
+          <p class="remember">
+            <input type="checkbox" name="rememberme" id="rememberme">
+            <span>Remember me</span>
+          </p>
+          <p class="forgot">
+            <i class="fas fa-circle"></i>Forgot Password
+          </p>
+        </div>
+
+        <button class="btn-login">Sign in</button>
+
+        <p class="redirect">Don't have an account? <a class="link" href="../HTML/Register.html">Register</a></p>
+    </form>
+<!-- Sign in Form End -->
+</body>
+</html>
